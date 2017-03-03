@@ -34,10 +34,14 @@ feature 'attacking' do
 # As Player 1,
 # So I can start to win a game of Battle,
 # I want my attack to reduce Player 2's HP
-  xscenario 'attacking  player 2' do
+  scenario "attack reduces player 2's HP" do
     sign_in_and_play
     click_button("Attack")
-
-    expect(page).to have_css("progress[value='50']")
+    expect(page).to have_css("progress[value='55']")
   end
+
+  
+
+
+
 end

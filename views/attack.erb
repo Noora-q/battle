@@ -1,1 +1,11 @@
-<center><h2><%=@player2%> has been hit!</h2></center>
+<center><h2><%=@player2%> has been hit!</h2>
+
+  <h3>
+  <%=@player2%>'s HP: <%=@player2hp%>
+  </h3>
+
+<div>
+  <label for="hp_min">0</label>
+  <progress value=<%=@player2hp%> max="100"></progress>
+  <label for="hp_max">100</label>
+</div></center>
