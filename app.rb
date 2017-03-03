@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'player'
 
 class Battle < Sinatra::Base
   get '/' do
@@ -6,7 +7,6 @@ class Battle < Sinatra::Base
   end
   run if app_file == $0
 
-  enable :sessions
 
   get '/names' do
     erb(:index)
@@ -22,15 +22,21 @@ class Battle < Sinatra::Base
 
   post '/names' do
     p params
-    session['player1'] = params[:player1]
-    session['player2'] = params[:player2]
+    p $player1 = Player.new(params[:player1])
+    $player2 = Player.new(params[:player2])
     redirect '/play'
   end
 
   get '/play' do
-    @player1 = session['player1']
-    @player2 = session['player2']
+    @player1 = $player1.name
+    @player2 = $player2.name
     @player2hp = "65"
     erb(:play)
+  end
+
+  get '/attack' do
+    @player1 = $player1.name
+    @player2 = $player2.name
+    erb(:attack)
   end
 end
