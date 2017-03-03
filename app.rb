@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'player'
+require_relative 'lib/player'
 
 class Battle < Sinatra::Base
   get '/' do
@@ -22,7 +22,7 @@ class Battle < Sinatra::Base
 
   post '/names' do
     p params
-    p $player1 = Player.new(params[:player1])
+    $player1 = Player.new(params[:player1])
     $player2 = Player.new(params[:player2])
     redirect '/play'
   end
