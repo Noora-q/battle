@@ -11,12 +11,6 @@ describe Player do
     end
   end
 
-  describe "#attack" do
-    it "reduce Player 2's HP on attack" do
-      expect(noora.attack(nick)).to eq(55)
-    end
-  end
-
   describe "#receive_damage" do
     it "reduces players hp by default damage" do
       expect {noora.receive_damage}.to change {noora.hp}.by(- damage)
